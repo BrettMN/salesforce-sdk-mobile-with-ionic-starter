@@ -24,3 +24,43 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+## Reference 
+
+https://developer.salesforce.com/docs/atlas.en-us.mobile_sdk.meta/mobile_sdk/hybrid_samples_build.htm
+
+## Add new plugins
+
+```
+cordova pluging add {{new plugin name}}
+```
+
+
+## Remove and add Salesforce plugin
+
+```
+cordova plugin remove com.salesforce
+cordova plugin add https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin --force
+```
+
+## Add platforms
+
+Android
+```
+cordova platform add android@6.1.2
+```
+ios
+```
+cordova platform add ios@4.3.0
+```
+
+Before Prepare 
+
+```
+npm run build
+```
+
+prepare
+```
+cordova prepare
+```
+
