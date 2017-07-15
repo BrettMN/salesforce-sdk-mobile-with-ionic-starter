@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { OAuth, DataService } from 'forcejs';
@@ -13,7 +13,7 @@ import { OAuth, DataService } from 'forcejs';
 @Injectable()
 export class ContactsServiceProvider {
 
-  constructor(public http: Http) {
+  constructor(){//public http: Http) {
     console.log('Hello ContactsServiceProvider Provider');
   }
 
