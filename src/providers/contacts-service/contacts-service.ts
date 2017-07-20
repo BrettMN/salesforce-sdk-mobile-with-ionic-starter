@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 
 import { OAuth, DataService } from 'forcejs';
@@ -13,11 +13,11 @@ import { OAuth, DataService } from 'forcejs';
 @Injectable()
 export class ContactsServiceProvider {
 
-  constructor(){//public http: Http) {
+  constructor() {
     console.log('Hello ContactsServiceProvider Provider');
   }
 
-  loadContacts(){
+  loadContacts() {
     let oauth = OAuth.createInstance();
 
     return oauth.login()
@@ -28,5 +28,17 @@ export class ContactsServiceProvider {
 
       });
   }
+
+getContact(id:string) {
+  let oauth = OAuth.createInstance();
+
+  return oauth.login()
+    .then(oauthResult => {
+      let service = DataService.createInstance(oauthResult);
+
+      return service.query(`SELECT Id, FirstName, LastName, Name, Email, MobilePhone FROM Contact WHERE Id = '${id}'`);
+
+    });
+}
 
 }

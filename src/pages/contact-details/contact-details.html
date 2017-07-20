@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-icon name="contact"></ion-icon> <span *ngIf="contact">{{contact.Name}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="contact">
+    <h3>First Name</h3>
+    <p>{{contact.FirstName}}</p>
+    <h3>Last Name</h3>
+    <p>{{contact.LastName}}</p>
+    <h3>Email</h3>
+    <p>{{contact.Email}}</p>
+    <h3>Mobile Phone</h3>
+    <p>{{contact.MobilePhone}}</p>
+  </div>
+</ion-content>

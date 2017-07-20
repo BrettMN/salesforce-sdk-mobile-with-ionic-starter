@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { ContactDetailsPage } from '../contact-details/contact-details';
+
 import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
 
 /**
@@ -16,16 +18,27 @@ import { ContactsServiceProvider } from '../../providers/contacts-service/contac
 })
 export class ContactsPage {
 
-  contacts :  Array<{Id: string, name: any}>;
+  contacts: Array<{ Id: string, Name: any }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service:ContactsServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactsPage');
 
+    this.loadContacts();
+  }
+
+  loadContacts() {
     this.service.loadContacts()
-    .then(results => this.contacts = results.records)
+      .then(results => {
+        console.log(results);
+        this.contacts = results.records;
+      })
+  }
+
+  selectContact(id: string) {
+    this.navCtrl.push(ContactDetailsPage, { "id": id });
   }
 
 }
