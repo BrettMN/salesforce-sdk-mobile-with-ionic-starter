@@ -29,16 +29,28 @@ export class ContactsServiceProvider {
       });
   }
 
-getContact(id:string) {
-  let oauth = OAuth.createInstance();
+  getContact(id: string) {
+    let oauth = OAuth.createInstance();
 
-  return oauth.login()
-    .then(oauthResult => {
-      let service = DataService.createInstance(oauthResult);
+    return oauth.login()
+      .then(oauthResult => {
+        let service = DataService.createInstance(oauthResult);
 
-      return service.query(`SELECT Id, FirstName, LastName, Name, Email, MobilePhone FROM Contact WHERE Id = '${id}'`);
+        return service.query(`SELECT Id, FirstName, LastName, Name, Email, MobilePhone FROM Contact WHERE Id = '${id}'`);
 
-    });
-}
+      });
+  }
+
+  updateContact(contact: { Id: string, FirstName: string, LastName: string, Email: string, MobilePhone: string }) {
+    let oauth = OAuth.createInstance();
+
+    return oauth.login()
+      .then(oauthResult => {
+        let service = DataService.createInstance(oauthResult);
+
+        return service.update('contact', contact);
+
+      });
+  }
 
 }

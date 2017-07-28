@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { ContactDetailsPage } from '../pages/contact-details/contact-details';
+import { ContactEditPage } from '../pages/contact-edit/contact-edit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +19,8 @@ import { ContactsServiceProvider } from '../providers/contacts-service/contacts-
     HomePage,
     ListPage,
     ContactsPage,
-    ContactDetailsPage
+    ContactDetailsPage,
+    ContactEditPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { ContactsServiceProvider } from '../providers/contacts-service/contacts-
     HomePage,
     ListPage,
     ContactsPage,
-    ContactDetailsPage
+    ContactDetailsPage,
+    ContactEditPage
   ],
   providers: [
     StatusBar,

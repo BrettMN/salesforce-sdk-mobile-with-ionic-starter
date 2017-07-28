@@ -29,8 +29,7 @@
         "@ionic-native/splash-screen": "3.12.1",
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "2.0.1",
-        "SalesforceMobileSDK-CordovaPlugin": "git+https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin.git#v5.2.0",
-        "com.salesforce": "https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin#v5.2.0",
+        "SalesforceMobileSDK-CordovaPlugin": "git+https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.0.1",
@@ -41,7 +40,6 @@
         "ionic-angular": "3.5.0",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
-        "phonegap-plugin-push": "^1.5.1",
         "rxjs": "5.4.0",
         "shelljs": "^0.7.0",
         "sw-toolbox": "3.6.0",
@@ -56,7 +54,6 @@
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "com.salesforce": {},
             "cordova-plugin-console": {},
             "cordova-plugin-device": {},
             "cordova-plugin-splashscreen": {},
