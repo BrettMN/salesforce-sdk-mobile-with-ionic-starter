@@ -41,8 +41,20 @@ export class ContactsServiceProvider {
       });
   }
 
-  updateContact(contact: { Id: string, FirstName: string, LastName: string, Email: string, MobilePhone: string }) {
+  updateContact(
+    contact:
+      {
+        Id: string,
+        FirstName: string,
+        LastName: string,
+        Email: string,
+        MobilePhone: string,
+        Name: string
+      }
+  ) {
     let oauth = OAuth.createInstance();
+
+    delete contact.Name;
 
     return oauth.login()
       .then(oauthResult => {

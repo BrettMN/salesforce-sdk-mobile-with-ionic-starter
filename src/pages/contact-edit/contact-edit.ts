@@ -30,9 +30,14 @@ export class ContactEditPage {
   updateContact() {
     this.service.updateContact(this.contact)
       .then(results => {
+        console.log('updateContact was a success');
         console.log(results);
         this.navCtrl.push(ContactDetailsPage, { "id": this.contact.Id });
-      });
+      })
+      .catch(error => {
+        console.log('updateContact had an error');
+        console.log(error);
+      })
   }
 
   dismiss() {
