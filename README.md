@@ -46,11 +46,11 @@ cordova plugin add https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlu
 
 Android
 ```
-cordova platform add android@6.1.2
+cordova platform add android
 ```
 ios
 ```
-cordova platform add ios@4.3.0
+cordova platform add ios
 ```
 
 Before Prepare 
