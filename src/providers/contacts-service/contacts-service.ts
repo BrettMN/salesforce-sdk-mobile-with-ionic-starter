@@ -4,6 +4,9 @@ import 'rxjs/add/operator/map';
 
 import { OAuth, DataService } from 'forcejs';
 
+// Tell TypeScript that I know better than it
+declare var force: any;
+
 /*
   Generated class for the ContactsServiceProvider provider.
 
@@ -52,17 +55,28 @@ export class ContactsServiceProvider {
         Name: string
       }
   ) {
-    let oauth = OAuth.createInstance();
 
     delete contact.Name;
 
-    return oauth.login()
-      .then(oauthResult => {
-        let service = DataService.createInstance(oauthResult);
+    return new Promise(function (resolve, reject) {
 
-        return service.update('contact', contact);
-
+      force.login(function () {
+        console.log('auth success');
+        force.update('contact',
+          contact,
+          function (result) {
+            console.log('update success');
+            console.log({ result });
+            resolve(result);
+          }),
+          function (result) {
+            console.log('update failed');
+            console.log({ result });
+            reject(result);
+          }
       });
+
+    });
   }
 
 }
