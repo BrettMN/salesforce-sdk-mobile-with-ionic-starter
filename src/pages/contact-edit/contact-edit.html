@@ -15,14 +15,14 @@
 
 <ion-content padding>
   <form *ngIf="contact">
-    <label for="FirstName"></label>
+    <label for="FirstName">First Name</label>
     <input type="text" id="FirstName" [(ngModel)]="contact.FirstName" name="FirstName">
-    <label for="LastName"></label>
+    <label for="LastName">Last Name</label>
     <input type="text" id="LastName" [(ngModel)]="contact.LastName" name="LastName">
-    <label for="Email"></label>
+    <label for="Email">Email</label>
     <input type="text" id="Email" [(ngModel)]="contact.Email" name="Email">
-    <label for="MobilePhone"></label>
+    <label for="MobilePhone">Mobile Phone</label>
     <input type="text" id="MobilePhone" [(ngModel)]="contact.MobilePhone" name="MobilePhone">
-    <button ion-button (click)="updateContact()">Save</button>
+    <button ion-button (click)="saveContact()">Save</button>
   </form>
 </ion-content>

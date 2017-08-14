@@ -44,17 +44,19 @@ export class ContactsServiceProvider {
       });
   }
 
-  updateContact(
-    contact:
-      {
-        Id: string,
-        FirstName: string,
-        LastName: string,
-        Email: string,
-        MobilePhone: string,
-        Name: string
-      }
-  ) {
+saveContact(
+  contact:
+    {
+      Id: string,
+      FirstName: string,
+      LastName: string,
+      Email: string,
+      MobilePhone: string,
+      Name: string
+    }
+) {
+
+  if (contact.Id) {
 
     delete contact.Name;
 
@@ -77,6 +79,28 @@ export class ContactsServiceProvider {
       });
 
     });
+  } else {
+    
+    return new Promise(function (resolve, reject) {
+
+      force.login(function () {
+        console.log('auth success');
+        force.create('contact',
+          contact,
+          function (result) {
+            console.log('create success');
+            console.log({ result });
+            resolve(result);
+          }),
+          function (result) {
+            console.log('create failed');
+            console.log({ result });
+            reject(result);
+          }
+      });
+
+    });
   }
+}
 
 }

@@ -24,11 +24,11 @@ export class ContactEditPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactEditPage');
 
-    this.contact = this.navParams.get('contact');
+    this.contact = this.navParams.get('contact') || {};
   }
 
-  updateContact() {
-    this.service.updateContact(this.contact)
+  saveContact() {
+    this.service.saveContact(this.contact)
       .then(results => {
         console.log('updateContact was a success');
         console.log(results);

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
+import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailsPage } from '../contact-details/contact-details';
 
 import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
@@ -20,7 +21,7 @@ export class ContactsPage {
 
   contacts: Array<{ Id: string, Name: any }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider, public modalCtrl: ModalController ) {
   }
 
   ionViewDidLoad() {
@@ -39,6 +40,12 @@ export class ContactsPage {
 
   selectContact(id: string) {
     this.navCtrl.push(ContactDetailsPage, { "id": id });
+  }
+
+  addContact(contact: any) {
+    let editModal = this.modalCtrl.create(ContactEditPage);
+
+    editModal.present();
   }
 
 }
