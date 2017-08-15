@@ -15,14 +15,26 @@
 
 <ion-content padding>
   <form *ngIf="contact">
-    <label for="FirstName">First Name</label>
-    <input type="text" id="FirstName" [(ngModel)]="contact.FirstName" name="FirstName">
-    <label for="LastName">Last Name</label>
-    <input type="text" id="LastName" [(ngModel)]="contact.LastName" name="LastName">
-    <label for="Email">Email</label>
-    <input type="text" id="Email" [(ngModel)]="contact.Email" name="Email">
-    <label for="MobilePhone">Mobile Phone</label>
-    <input type="text" id="MobilePhone" [(ngModel)]="contact.MobilePhone" name="MobilePhone">
-    <button ion-button (click)="saveContact()">Save</button>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.FirstName" name="FirstName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.LastName" name="LastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.Email" name="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Mobile Phone</ion-label>
+        <ion-input type="text" [(ngModel)]="contact.MobilePhone" name="MobilePhone"></ion-input>
+      </ion-item>
+      <div padding>
+        <button ion-button block (click)="saveContact()">Save</button>
+      </div>
+    </ion-list>
   </form>
 </ion-content>
