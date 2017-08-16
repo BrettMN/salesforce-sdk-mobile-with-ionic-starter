@@ -44,63 +44,73 @@ export class ContactsServiceProvider {
       });
   }
 
-saveContact(
-  contact:
-    {
-      Id: string,
-      FirstName: string,
-      LastName: string,
-      Email: string,
-      MobilePhone: string,
-      Name: string
+  saveContact(
+    contact:
+      {
+        Id: string,
+        FirstName: string,
+        LastName: string,
+        Email: string,
+        MobilePhone: string,
+        Name: string
+      }
+  ) {
+
+    if (contact.Id) {
+
+      delete contact.Name;
+
+      return new Promise(function (resolve, reject) {
+
+        force.login(function () {
+          console.log('auth success');
+          force.update('contact',
+            contact,
+            function (result) {
+              console.log('update success');
+              console.log({ result });
+              resolve(result);
+            }),
+            function (result) {
+              console.log('update failed');
+              console.log({ result });
+              reject(result);
+            }
+        });
+
+      });
+    } else {
+
+      return new Promise(function (resolve, reject) {
+
+        force.login(function () {
+          console.log('auth success');
+          force.create('contact',
+            contact,
+            function (result) {
+              console.log('create success');
+              console.log({ result });
+              resolve(result);
+            }),
+            function (result) {
+              console.log('create failed');
+              console.log({ result });
+              reject(result);
+            }
+        });
+
+      });
     }
-) {
-
-  if (contact.Id) {
-
-    delete contact.Name;
-
-    return new Promise(function (resolve, reject) {
-
-      force.login(function () {
-        console.log('auth success');
-        force.update('contact',
-          contact,
-          function (result) {
-            console.log('update success');
-            console.log({ result });
-            resolve(result);
-          }),
-          function (result) {
-            console.log('update failed');
-            console.log({ result });
-            reject(result);
-          }
-      });
-
-    });
-  } else {
-    
-    return new Promise(function (resolve, reject) {
-
-      force.login(function () {
-        console.log('auth success');
-        force.create('contact',
-          contact,
-          function (result) {
-            console.log('create success');
-            console.log({ result });
-            resolve(result);
-          }),
-          function (result) {
-            console.log('create failed');
-            console.log({ result });
-            reject(result);
-          }
-      });
-
-    });
   }
-}
+  deleteContact(Id: string) {
+    let oauth = OAuth.createInstance();
+
+    return oauth.login()
+      .then(oauthResult => {
+        let service = DataService.createInstance(oauthResult);
+
+        return service.del('Contact', Id);
+      });
+  }
 
 }
