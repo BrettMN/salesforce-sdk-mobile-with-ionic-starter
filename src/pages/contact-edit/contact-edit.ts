@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
-
-import { ContactDetailsPage } from '../contact-details/contact-details';
 import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
 
 @IonicPage()
@@ -15,7 +13,6 @@ export class ContactEditPage {
   contact: any;
 
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     private service: ContactsServiceProvider
@@ -32,7 +29,8 @@ export class ContactEditPage {
       .then(results => {
         console.log('updateContact was a success');
         console.log(results);
-        this.navCtrl.push(ContactDetailsPage, { "id": this.contact.Id });
+
+        this.viewCtrl.dismiss();
       })
       .catch(error => {
         console.log('updateContact had an error');
