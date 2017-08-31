@@ -21,7 +21,7 @@ export class ContactsPage {
 
   contacts: Array<{ Id: string, Name: any }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider, public modalCtrl: ModalController ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -31,10 +31,20 @@ export class ContactsPage {
   }
 
   loadContacts() {
-    this.service.loadContacts()
+
+    return this.service.loadContacts()
       .then(results => {
         console.log(results);
         this.contacts = results.records;
+      })
+  }
+
+  refreshContacts(refresher) {
+
+    this.loadContacts()
+      .then(() => {
+
+        refresher.complete();
       })
   }
 

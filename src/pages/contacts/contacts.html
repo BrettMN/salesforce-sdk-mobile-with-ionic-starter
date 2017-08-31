@@ -16,6 +16,10 @@
 
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="refreshContacts($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
     <ion-item *ngFor="let contact of contacts" (click)="selectContact(contact.Id)">
       {{ contact.Name }}
