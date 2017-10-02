@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController, ActionSheetController, Platform } from 'ionic-angular';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 import { ContactsPage } from '../../pages/contacts/contacts';
 import { ContactEditPage } from '../../pages/contact-edit/contact-edit';
@@ -21,7 +22,8 @@ export class ContactDetailsPage {
     private service: ContactsServiceProvider,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
-    public platform: Platform
+    public platform: Platform,
+    private emailer: EmailComposer
   ) { }
 
   ionViewDidLoad() {
@@ -96,6 +98,22 @@ export class ContactDetailsPage {
             actionSheet.onDidDismiss(() => {
 
               this.updateContact();
+            });
+          }
+        },
+        {
+          text: 'Email',
+          icon: !this.platform.is('ios') ? 'mail' : null,
+          handler: () => {
+
+            actionSheet.onDidDismiss(() => {
+              let email = {
+                to: this.contact.Email,
+                subject: `Hello ${this.contact.FirstName}`,
+                body: `This is a test email sent to ${this.contact.LastName}, ${this.contact.FirstName} at email address ${this.contact.Email}.`,
+                isHtml: false
+              };
+              this.emailer.open(email);
             });
           }
         },
