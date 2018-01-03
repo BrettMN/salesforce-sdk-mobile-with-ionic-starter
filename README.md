@@ -31,26 +31,27 @@ https://developer.salesforce.com/docs/atlas.en-us.mobile_sdk.meta/mobile_sdk/hyb
 ## Add new plugins
 
 ```
-cordova pluging add {{new plugin name}}
+ionic cordova pluging add {{new plugin name}}
 ```
 
 
 ## Remove and add Salesforce plugin
 
 ```
-cordova plugin remove com.salesforce
-cordova plugin add https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin --force
+ionic cordova plugin remove com.salesforce
+ionic cordova plugin add https://github.com/forcedotcom/SalesforceMobileSDK-CordovaPlugin --force
 ```
 
 ## Add platforms
+https://developer.salesforce.com/docs/atlas.en-us.noversion.mobile_sdk.meta/mobile_sdk/hybrid_ios.htm
 
 Android
 ```
-cordova platform add android
+ionic cordova platform add android@6.2.3
 ```
 ios
 ```
-cordova platform add ios
+ionic cordova platform add ios@4.4.0
 ```
 
 Before Prepare 

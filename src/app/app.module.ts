@@ -13,6 +13,7 @@ import { ContactEditPage } from '../pages/contact-edit/contact-edit';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactsServiceProvider } from '../providers/contacts-service/contacts-service';
+import { SmartstoreServiceProvider } from '../providers/smartstore-service/smartstore-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ContactsServiceProvider } from '../providers/contacts-service/contacts-
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     EmailComposer,
-    ContactsServiceProvider
+    ContactsServiceProvider,
+    SmartstoreServiceProvider
   ]
 })
 export class AppModule { }
