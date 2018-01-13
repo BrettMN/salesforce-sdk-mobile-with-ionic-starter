@@ -4,7 +4,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { ContactEditPage } from '../contact-edit/contact-edit';
 import { ContactDetailsPage } from '../contact-details/contact-details';
 
-import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
+// import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
+import { SmartstoreServiceProvider} from '../../providers/smartstore-service/smartstore-service'; 
 
 /**
  * Generated class for the ContactsPage page.
@@ -21,7 +22,7 @@ export class ContactsPage {
 
   contacts: Array<{ Id: string, Name: any }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ContactsServiceProvider, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private service: SmartstoreServiceProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {

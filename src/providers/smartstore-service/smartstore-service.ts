@@ -23,6 +23,8 @@ export class SmartstoreServiceProvider {
 
   constructor(private contactsService: ContactsServiceProvider) {
 
+
+
     console.log('constructor')
 
     //const smartStore = cordova.require("com.salesforce.plugin.smartstore")
@@ -40,13 +42,19 @@ export class SmartstoreServiceProvider {
       {
         path: 'Id',
         type: 'string'
-      }]
+      }];
 
-    let success = (soupName) => console.log(`Soup ${soupName} was successfully created!`)
 
-    let failure = (error) => console.error(`Registering soup fails with error: ${error}`)
+    let success = (soupName) => {
+      console.log(`Soup ${soupName} was successfully created!`);
 
-    this.smartStore().registerSoup(this.soupName, indexSpecs, success, failure)
+      this.fillSoup();
+    }
+
+    let failure = (error) => console.error(`Registering soup fails with error: ${error}`);
+
+    this.smartStore().registerSoup(this.soupName, indexSpecs, success, failure);
+
   }
 
   // End First Post
@@ -60,13 +68,14 @@ export class SmartstoreServiceProvider {
     return this.contactsService.loadContacts()
       .then(results => {
 
-        let success = (items) => console.log(`Items upserted to Soup: ${items}`)
+        let success = (items) => console.log(`Items upserted to Soup: ${items}`);
 
-        let failure = (error) => console.error(`Soup Upsert Error: ${error}`)
+        let failure = (error) => console.error(`Soup Upsert Error: ${error}`);
 
-        this.smartStore().upsertSoupEntries(this.soupName, results.records, success, failure)
+        (navigator as sdkNavigator).smartstore.clearSoup(this.soupName, () =>
+          this.smartStore().upsertSoupEntries(this.soupName, results.records, success, failure)
+        );
       })
-
   }
 
   // End Second Post
@@ -88,14 +97,28 @@ export class SmartstoreServiceProvider {
 
     const success = (results) => console.log({ results })
 
-    const failure = (error) => console.log(error)
+    const failure = (error) => console.log(error);
 
-      ; (navigator as sdkNavigator).smartstore.querySoup(this.soupName, querySpec, success, failure)
+    (navigator as sdkNavigator).smartstore.querySoup(this.soupName, querySpec, success, failure)
 
   }
 
   // End Third Post
 
+  loadContacts(): Promise<any> {
 
+    console.log('loadContacts');
+
+    return new Promise((resolve, reject) => {
+
+      var querySpec = (navigator as sdkNavigator).smartstore.buildAllQuerySpec('Name', 'ascending', 50);
+
+      let success = (results) => resolve({ records: results.currentPageOrderedEntries });
+
+      (navigator as sdkNavigator).smartstore.querySoup(this.soupName, querySpec, success, reject);
+
+    });
+
+  }
 
 }
