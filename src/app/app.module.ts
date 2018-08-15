@@ -6,9 +6,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { ContactsPage } from '../pages/contacts/contacts';
-import { ContactDetailsPage } from '../pages/contact-details/contact-details';
-import { ContactEditPage } from '../pages/contact-edit/contact-edit';
+import { ContactsPageModule } from '../pages/contacts/contacts.module';
+import { ContactDetailsPageModule } from '../pages/contact-details/contact-details.module';
+import { ContactEditPageModule } from '../pages/contact-edit/contact-edit.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,12 +20,12 @@ import { SmartstoreServiceProvider } from '../providers/smartstore-service/smart
     MyApp,
     HomePage,
     ListPage,
-    ContactsPage,
-    ContactDetailsPage,
-    ContactEditPage
   ],
   imports: [
     BrowserModule,
+    ContactsPageModule,
+    ContactDetailsPageModule,
+    ContactEditPageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -33,9 +33,6 @@ import { SmartstoreServiceProvider } from '../providers/smartstore-service/smart
     MyApp,
     HomePage,
     ListPage,
-    ContactsPage,
-    ContactDetailsPage,
-    ContactEditPage
   ],
   providers: [
     StatusBar,
