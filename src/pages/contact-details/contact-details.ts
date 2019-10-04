@@ -4,7 +4,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
 
 import { ContactsPage } from '../../pages/contacts/contacts';
 import { ContactEditPage } from '../../pages/contact-edit/contact-edit';
-import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
+// import { ContactsServiceProvider } from '../../providers/contacts-service/contacts-service';
+
+import { SmartstoreServiceProvider } from '../../providers/smartstore-service/smartstore-service';
 
 @IonicPage()
 @Component({
@@ -19,7 +21,8 @@ export class ContactDetailsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    private service: ContactsServiceProvider,
+    //private service: ContactsServiceProvider,
+    private service: SmartstoreServiceProvider,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
